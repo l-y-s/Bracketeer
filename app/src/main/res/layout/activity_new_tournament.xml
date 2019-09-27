@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewTournamentActivity">
+
+    <Spinner
+        android:id="@+id/typeList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        android:entries="@array/tournament_types"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/typeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/newTitle" />
+
+    <TextView
+        android:id="@+id/typeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        android:text="@string/tournament_type"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/typeList"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newTitle" />
+
+    <TextView
+        android:id="@+id/newTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:text="@string/new_tournament"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/players"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/playerInput"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
+
+    <EditText
+        android:id="@+id/playerInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:hint="@string/enter_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/playersLabel"
+        app:layout_constraintTop_toBottomOf="@+id/typeList" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/playerInput"
+        app:layout_constraintTop_toBottomOf="@+id/typeList"
+        tools:text="@string/add" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playerListView"
+        android:layout_width="409dp"
+        android:layout_height="355dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
