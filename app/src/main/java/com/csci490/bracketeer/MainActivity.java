@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /** Called when the new tournament button is pressed */
+    // Called when the new tournament button is pressed
     public void createNewTournament(View view) {
         Intent intent = new Intent(this, NewTournamentActivity.class);
         startActivity(intent);

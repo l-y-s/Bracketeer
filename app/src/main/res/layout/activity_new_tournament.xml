@@ -36,12 +36,13 @@
         android:layout_height="53dp"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
         android:text="@string/new_tournament"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,20 +76,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
-        android:text="Button"
+        android:onClick="updateList"
+        android:text="@string/add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/playerInput"
-        app:layout_constraintTop_toBottomOf="@+id/typeList"
-        tools:text="@string/add" />
+        app:layout_constraintTop_toBottomOf="@+id/typeList" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playerListView"
-        android:layout_width="409dp"
-        android:layout_height="355dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="328dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.516" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
