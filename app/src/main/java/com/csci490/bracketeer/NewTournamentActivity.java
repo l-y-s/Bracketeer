@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
 
     RecyclerViewAdapter adapter;
     ArrayList<String> playerList = new ArrayList<>();
+    GameState newGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +36,21 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
     }
 
     public void updateList(View view) {
-        EditText playerField = (EditText) findViewById(R.id.playerInput);
-        RecyclerView recyclerView = findViewById(R.id.playerListView);
+        EditText playerField = findViewById(R.id.playerInput);
         String playerName = playerField.getText().toString();
         if(playerName.length() > 0) {
             playerList.add(playerName);
             adapter.notifyDataSetChanged();
+            playerField.getText().clear();
         }
+    }
+
+    public void startGame(View view) {
+        Spinner modeSpinner = findViewById(R.id.typeList);
+        newGame = new GameState(playerList, modeSpinner.getSelectedItem().toString());
+
+        Intent intent = new Intent(this, RoundPairings.class);
+        intent.putExtra("gameState", newGame);
+        startActivity(intent);
     }
 }
