@@ -13,4 +13,5 @@
     <string name="players">Players:</string>
     <string name="enter_name">Enter Player Name</string>
     <string name="start_game">Start Game</string>
+    <string name="single_elim">Single Elimination</string>
 </resources>

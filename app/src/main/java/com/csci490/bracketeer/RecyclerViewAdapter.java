@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-//Adapted from https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
+//Adapted (ha ha) from https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private List<String> mData;
