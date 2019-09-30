@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RoundPairings"></activity>
+        <activity android:name=".RRRoundPairings"></activity>
+        <activity android:name=".SwissRoundPairings" />
+        <activity android:name=".DoubleElimRoundPairings" />
+        <activity android:name=".SingleElimRoundPairings" />
         <activity android:name=".NewTournamentActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

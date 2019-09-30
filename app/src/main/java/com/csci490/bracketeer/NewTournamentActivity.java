@@ -46,10 +46,29 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
     }
 
     public void startGame(View view) {
+        Intent intent = null;
         Spinner modeSpinner = findViewById(R.id.typeList);
         newGame = new GameState(playerList, modeSpinner.getSelectedItem().toString());
 
-        Intent intent = new Intent(this, RoundPairings.class);
+        switch(modeSpinner.getSelectedItem().toString()) {
+
+            case "Single-Elimination":
+                intent = new Intent(this, SingleElimRoundPairings.class);
+                break;
+
+            case "Double-Elimination":
+                intent = new Intent(this, DoubleElimRoundPairings.class);
+                break;
+
+            case "Swiss":
+                intent = new Intent(this, SwissRoundPairings.class);
+                break;
+
+            case "Round-Robin":
+                intent = new Intent(this, RRRoundPairings.class);
+                break;
+        }
+
         intent.putExtra("gameState", newGame);
         startActivity(intent);
     }

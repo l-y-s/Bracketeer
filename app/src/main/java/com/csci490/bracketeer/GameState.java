@@ -18,5 +18,4 @@ public class GameState implements Serializable {
             this.matchPoints.put(currentPlayers.get(i), 0);
         }
     }
-
 }
