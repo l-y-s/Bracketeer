@@ -48,9 +48,10 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
     public void startGame(View view) {
         Intent intent = null;
         Spinner modeSpinner = findViewById(R.id.typeList);
-        newGame = new GameState(playerList, modeSpinner.getSelectedItem().toString());
+        String mode = modeSpinner.getSelectedItem().toString();
+        newGame = new GameState(playerList, mode);
 
-        switch(modeSpinner.getSelectedItem().toString()) {
+        switch(mode) {
 
             case "Single-Elimination":
                 intent = new Intent(this, SingleElimRoundPairings.class);
