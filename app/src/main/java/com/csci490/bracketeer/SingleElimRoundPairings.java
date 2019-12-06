@@ -11,19 +11,27 @@ import java.util.List;
 
 public class SingleElimRoundPairings extends AppCompatActivity {
 
-    GameState currentGameState = (GameState) getIntent().getExtras().getSerializable("gameState");
-    List<Player> currentPlayers = currentGameState.getCurrentPlayers();
-    List<List<Player>> seeds;
+    GameState currentGameState;
+    List<Player> currentPlayers;
+    List<List<Player>> seeds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_elim_round_pairings);
+        currentGameState = (GameState) getIntent().getExtras().getSerializable("gameState");
+        currentPlayers = currentGameState.getCurrentPlayers();
         TextView round = findViewById(R.id.roundLabel);
         String roundLabel = "Round " + Integer.toString(currentGameState.getCurrentRound());
         round.setText(roundLabel);
 
-        Collections.shuffle(currentPlayers);
+        if(!currentGameState.getLoaded()) {
+            Collections.shuffle(currentPlayers);
+            createSeeds();
+        }
+    }
+
+    private void createSeeds(){
         int numPlayers = currentPlayers.size();
         for(int i = 0; i < (numPlayers / 2); i++){
             List<Player> pair = new ArrayList<>();
@@ -45,6 +53,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
                 pair.add(currentPlayer);
                 seeds.add(pair);
             }
+            presentFlag = false;
         }
     }
 }
