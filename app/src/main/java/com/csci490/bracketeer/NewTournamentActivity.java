@@ -70,7 +70,9 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
                 break;
         }
 
-        intent.putExtra("gameState", newGame);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("gameState", newGame);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

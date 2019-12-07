@@ -1,22 +1,23 @@
 package com.csci490.bracketeer;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 public class GameState implements Serializable {
-    private List<String> currentPlayers;
+    private String tournamentName;
+    private List<Player> currentPlayers = new ArrayList<>();
     private String tournamentMode;
-    private Map matchPoints = new HashMap();
-    private int currentRound = 0;
+    private int currentRound = 1;
+    private boolean loaded = false;
 
     GameState(List<String> playerList, String mode) {
-        this.currentPlayers = playerList;
         this.tournamentMode = mode;
-
-        for(int i = 0; i < currentPlayers.size(); i++) {
-            this.matchPoints.put(currentPlayers.get(i), 0);
+        for(int i = 0; i < playerList.size(); i++){
+            String tmpName = playerList.get(i);
+            Player tmpPlayer = new Player(tmpName);
+            currentPlayers.add(tmpPlayer);
         }
     }
 
@@ -26,5 +27,17 @@ public class GameState implements Serializable {
 
     public int getCurrentRound() {
         return currentRound;
+    }
+
+    public List<Player> getCurrentPlayers(){
+        return currentPlayers;
+    }
+
+    public boolean getLoaded(){
+        return loaded;
+    }
+
+    public void setLoaded(){
+        loaded = true;
     }
 }

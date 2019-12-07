@@ -2,9 +2,10 @@ package com.csci490.bracketeer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
             Collections.shuffle(currentPlayers);
         }
         createSeeds();
+        populateSeeds();
     }
 
     private void createSeeds(){
@@ -63,14 +65,47 @@ public class SingleElimRoundPairings extends AppCompatActivity {
     private void populateSeeds(){
         LinearLayout leftParent = findViewById(R.id.leftLayout);
         LinearLayout rightParent = findViewById(R.id.rightLayout);
+        leftParent.setGravity(Gravity.CENTER_VERTICAL);
+        rightParent.setGravity(Gravity.CENTER_VERTICAL);
 
         for(List<Player> currentSeed : seeds){
             LinearLayout leftSeedRow = new LinearLayout(getBaseContext());
-            leftSeedRow.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
+            LinearLayout rightSeedRow = new LinearLayout(getBaseContext());
+            leftSeedRow.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            rightSeedRow.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            leftSeedRow.setGravity(Gravity.CENTER_HORIZONTAL);
+            rightSeedRow.setGravity(Gravity.CENTER_HORIZONTAL);
+            leftSeedRow.setPadding(20, 20, 20, 20);
+            rightSeedRow.setPadding(20,20,20,20);
+
+            leftParent.addView(leftSeedRow);
+            rightParent.addView(rightSeedRow);
+
             TextView leftPlayer = new TextView(getBaseContext());
+            TextView rightPlayer = new TextView(getBaseContext());
+
+            leftPlayer.setText(currentSeed.get(0).getName());
+            leftPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
+
+            CheckBox leftWinner = new CheckBox(getBaseContext());
+            leftWinner.setTag(currentSeed.get(0).getName());
+
+            leftSeedRow.addView(leftWinner);
+            leftSeedRow.addView(leftPlayer);
 
             if(currentSeed.size() == 1){
-                leftPlayer.setText(currentSeed.get(0).getName());
+                rightPlayer.setText("Bye");
+                rightPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
+                leftWinner.setChecked(true);
+                rightSeedRow.addView(rightPlayer);
+            }
+            else {
+                rightPlayer.setText(currentSeed.get(1).getName());
+                rightPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
+                CheckBox rightWinner = new CheckBox(getBaseContext());
+                rightWinner.setTag(currentSeed.get(1).getName());
+                rightSeedRow.addView(rightWinner);
+                rightSeedRow.addView(rightPlayer);
             }
         }
     }
