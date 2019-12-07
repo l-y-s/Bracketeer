@@ -2,7 +2,10 @@ package com.csci490.bracketeer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -27,8 +30,8 @@ public class SingleElimRoundPairings extends AppCompatActivity {
 
         if(!currentGameState.getLoaded()) {
             Collections.shuffle(currentPlayers);
-            createSeeds();
         }
+        createSeeds();
     }
 
     private void createSeeds(){
@@ -54,6 +57,21 @@ public class SingleElimRoundPairings extends AppCompatActivity {
                 seeds.add(pair);
             }
             presentFlag = false;
+        }
+    }
+
+    private void populateSeeds(){
+        LinearLayout leftParent = findViewById(R.id.leftLayout);
+        LinearLayout rightParent = findViewById(R.id.rightLayout);
+
+        for(List<Player> currentSeed : seeds){
+            LinearLayout leftSeedRow = new LinearLayout(getBaseContext());
+            leftSeedRow.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
+            TextView leftPlayer = new TextView(getBaseContext());
+
+            if(currentSeed.size() == 1){
+                leftPlayer.setText(currentSeed.get(0).getName());
+            }
         }
     }
 }
