@@ -1,9 +1,13 @@
 package com.csci490.bracketeer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -83,6 +87,9 @@ public class SingleElimRoundPairings extends AppCompatActivity {
 
             TextView leftPlayer = new TextView(getBaseContext());
             TextView rightPlayer = new TextView(getBaseContext());
+            Typeface face = ResourcesCompat.getFont(this, R.font.aldrich);
+            leftPlayer.setTypeface(face);
+            rightPlayer.setTypeface(face);
 
             leftPlayer.setText(currentSeed.get(0).getName());
             leftPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -107,6 +114,41 @@ public class SingleElimRoundPairings extends AppCompatActivity {
                 rightSeedRow.addView(rightWinner);
                 rightSeedRow.addView(rightPlayer);
             }
+        }
+    }
+
+    public void nextRound(View view){
+        LinearLayout layout = findViewById(R.id.leftLayout);
+        CheckBox box;
+        List<Player> winners = new ArrayList<>();
+        for(List<Player> currentSeed : seeds){
+            if(currentSeed.size() == 1){
+                winners.add(currentSeed.get(0));
+            }
+            else {
+                box = layout.findViewWithTag(currentSeed.get(0).getName());
+                if (box.isChecked()) {
+                    winners.add(currentSeed.get(0));
+                } else {
+                    winners.add(currentSeed.get(1));
+                }
+            }
+        }
+
+        currentGameState.incrementRound();
+        currentGameState.setCurrentPlayers(winners);
+
+        if(winners.size() == 1){
+
+        }
+        else {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("gameState", currentGameState);
+
+            Intent intent = new Intent(this, SingleElimRoundPairings.class);
+            intent.putExtras(bundle);
+
+            startActivity(intent);
         }
     }
 }

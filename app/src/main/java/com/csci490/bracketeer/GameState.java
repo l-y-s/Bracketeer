@@ -33,9 +33,11 @@ public class GameState implements Serializable {
         return currentPlayers;
     }
 
-    public boolean getLoaded(){
-        return loaded;
+    public void setCurrentPlayers(List<Player> winners){
+        currentPlayers = winners;
     }
+
+    public boolean getLoaded(){ return loaded; }
 
     public void setLoaded(){
         loaded = true;
