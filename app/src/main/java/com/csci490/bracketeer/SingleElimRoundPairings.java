@@ -162,6 +162,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
         }
 
         startActivity(intent);
+        finish();
     }
 
     public void save(View view){

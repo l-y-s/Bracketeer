@@ -21,5 +21,6 @@ public class WinnerActivity extends AppCompatActivity {
     public void exit(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

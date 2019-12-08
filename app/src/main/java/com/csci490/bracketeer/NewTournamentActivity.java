@@ -1,9 +1,11 @@
 package com.csci490.bracketeer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +34,23 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
     }
 
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        final int itemPosition = position;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Remove player?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                playerList.remove(adapter.getItem(itemPosition));
+                adapter.notifyDataSetChanged();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 
     public void updateList(View view) {
@@ -42,6 +60,9 @@ public class NewTournamentActivity extends AppCompatActivity implements Recycler
             playerList.add(playerName);
             adapter.notifyDataSetChanged();
             playerField.getText().clear();
+        }
+        else {
+            Toast.makeText(this, "Please enter a player name", Toast.LENGTH_SHORT).show();
         }
     }
 
