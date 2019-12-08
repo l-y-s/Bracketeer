@@ -1,18 +1,27 @@
 package com.csci490.bracketeer;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.ObjectStreamClass;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -101,7 +110,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
             leftSeedRow.addView(leftPlayer);
 
             if(currentSeed.size() == 1){
-                rightPlayer.setText("Bye");
+                rightPlayer.setText(R.string.bye);
                 rightPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
                 leftWinner.setChecked(true);
                 rightSeedRow.addView(rightPlayer);
@@ -153,5 +162,39 @@ public class SingleElimRoundPairings extends AppCompatActivity {
         }
 
         startActivity(intent);
+    }
+
+    public void save(View view){
+        final EditText input = new EditText(this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Enter name for tournament:");
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
+        builder.setView(input);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                currentGameState.setName(input.getText().toString());
+                currentGameState.setSerialVersionUID(ObjectStreamClass.lookup(currentGameState.getClass()).getSerialVersionUID());
+                String filename = currentGameState.getName();
+                try {
+                    File dirFile = new File(getFilesDir(), filename);
+                    FileOutputStream fos = new FileOutputStream(dirFile);
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(currentGameState);
+                    oos.close();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        builder.show();
     }
 }

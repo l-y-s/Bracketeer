@@ -6,6 +6,8 @@ import java.util.List;
 
 
 public class GameState implements Serializable {
+    private long serialVersionUID;
+
     private String tournamentName;
     private List<Player> currentPlayers = new ArrayList<>();
     private String tournamentMode;
@@ -41,5 +43,21 @@ public class GameState implements Serializable {
 
     public void setLoaded(){
         loaded = true;
+    }
+
+    public String getName(){
+        return tournamentName;
+    }
+
+    public void setName(String name){
+        tournamentName = name;
+    }
+
+    public String getMode(){
+        return tournamentMode;
+    }
+
+    public void setSerialVersionUID(long uid){
+        serialVersionUID = uid;
     }
 }
