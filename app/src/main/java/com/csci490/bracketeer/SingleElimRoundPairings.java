@@ -121,6 +121,8 @@ public class SingleElimRoundPairings extends AppCompatActivity {
         LinearLayout layout = findViewById(R.id.leftLayout);
         CheckBox box;
         List<Player> winners = new ArrayList<>();
+        Intent intent;
+
         for(List<Player> currentSeed : seeds){
             if(currentSeed.size() == 1){
                 winners.add(currentSeed.get(0));
@@ -139,16 +141,17 @@ public class SingleElimRoundPairings extends AppCompatActivity {
         currentGameState.setCurrentPlayers(winners);
 
         if(winners.size() == 1){
-
+            intent = new Intent(this, WinnerActivity.class);
+            intent.putExtra("winner", winners.get(0).getName());
         }
         else {
             Bundle bundle = new Bundle();
             bundle.putSerializable("gameState", currentGameState);
 
-            Intent intent = new Intent(this, SingleElimRoundPairings.class);
+            intent = new Intent(this, SingleElimRoundPairings.class);
             intent.putExtras(bundle);
-
-            startActivity(intent);
         }
+
+        startActivity(intent);
     }
 }
