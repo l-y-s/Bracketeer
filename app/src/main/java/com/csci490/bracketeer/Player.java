@@ -8,6 +8,7 @@ public class Player implements Serializable {
     private int matchPoints;
     private List<String> previousOpponents;
     private List<Integer> winLoss;
+    private boolean doubleElimLoss = false;
 
     Player(String newName){
         name = newName;
@@ -26,4 +27,11 @@ public class Player implements Serializable {
         return previousOpponents.get(round - 1);
     }
 
+    public boolean getLoss(){
+        return doubleElimLoss;
+    }
+
+    public void setDoubleElimLoss(boolean status){
+        doubleElimLoss = status;
+    }
 }

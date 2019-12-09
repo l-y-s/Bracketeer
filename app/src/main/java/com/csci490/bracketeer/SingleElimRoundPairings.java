@@ -35,11 +35,11 @@ public class SingleElimRoundPairings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_elim_round_pairings);
+        setContentView(R.layout.activity_round_pairings);
         currentGameState = (GameState) getIntent().getExtras().getSerializable("gameState");
         currentPlayers = currentGameState.getCurrentPlayers();
         TextView round = findViewById(R.id.roundLabel);
-        String roundLabel = "Round " + Integer.toString(currentGameState.getCurrentRound());
+        String roundLabel = "Round " + currentGameState.getCurrentRound();
         round.setText(roundLabel);
 
         if(!currentGameState.getLoaded()) {
