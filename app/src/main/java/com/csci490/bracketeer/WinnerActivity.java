@@ -12,7 +12,7 @@ public class WinnerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_winner);
+        setContentView(R.layout.activity_elim_winner);
 
         TextView winner = findViewById(R.id.winnerLabel);
         winner.setText(getIntent().getStringExtra("winner"));

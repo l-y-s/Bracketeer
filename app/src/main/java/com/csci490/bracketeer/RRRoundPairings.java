@@ -9,6 +9,6 @@ public class RRRoundPairings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rrround_pairings);
+        setContentView(R.layout.activity_non_elim_round_pairings);
     }
 }
