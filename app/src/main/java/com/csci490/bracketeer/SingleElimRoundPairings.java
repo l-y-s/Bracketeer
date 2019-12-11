@@ -109,6 +109,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
             leftSeedRow.addView(leftWinner);
             leftSeedRow.addView(leftPlayer);
 
+
             if(currentSeed.size() == 1){
                 rightPlayer.setText(R.string.bye);
                 rightPlayer.setGravity(Gravity.CENTER_HORIZONTAL);

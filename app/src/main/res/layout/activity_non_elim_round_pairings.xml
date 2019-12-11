@@ -6,4 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".RRRoundPairings">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/graybackground"
+        tools:context=".SingleElimRoundPairings"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="111dp">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="111dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="34dp"
+            android:background="#F46300"
+            android:onClick="nextRound"
+            android:text="@string/next_round"
+            app:fontFamily="@font/aldrich"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button10"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button8" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="111dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="34dp"
+            android:background="#F46300"
+            android:onClick="end"
+            android:text="@string/end"
+            app:fontFamily="@font/aldrich"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button7" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="111dp"
+            android:layout_height="51dp"
+            android:layout_marginBottom="34dp"
+            android:background="#F46300"
+            android:onClick="save"
+            android:text="@string/save"
+            app:fontFamily="@font/aldrich"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/roundLabel5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="@string/default_round"
+        android:textSize="24sp"
+        app:fontFamily="@font/aldrich"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/leftLayout"
+        android:layout_width="205dp"
+        android:layout_height="503dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="206dp"
+        android:layout_marginRight="206dp"
+        android:layout_marginBottom="104dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightLayout"
+        android:layout_width="205dp"
+        android:layout_height="503dp"
+        android:layout_marginStart="206dp"
+        android:layout_marginLeft="206dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="104dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
