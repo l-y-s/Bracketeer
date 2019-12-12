@@ -23,6 +23,10 @@ public class Player implements Serializable {
         return matchPoints;
     }
 
+    public void incrementMatchPoints(int points){
+        matchPoints += points;
+    }
+
     public String getPreviousOpponent(int round){
         return previousOpponents.get(round - 1);
     }

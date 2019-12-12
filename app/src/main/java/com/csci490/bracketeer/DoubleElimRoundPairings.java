@@ -36,7 +36,7 @@ public class DoubleElimRoundPairings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elim_round_pairings);
+        setContentView(R.layout.activity_round_pairings);
 
         currentGameState = (GameState) getIntent().getExtras().getSerializable("gameState");
         currentPlayers = currentGameState.getCurrentPlayers();
@@ -232,14 +232,6 @@ public class DoubleElimRoundPairings extends AppCompatActivity {
             if(currentSeed.size() == 1){
                 winners.add(currentSeed.get(0));
             }
-//            else if(!currentSeed.get(0).getLoss() && !currentSeed.get(1).getLoss()) {
-//                box = layout.findViewWithTag(currentSeed.get(0).getName());
-//                if(box.isChecked()) {
-//                    currentSeed.get(1).setDoubleElimLoss(true);
-//                    winners.add(currentSeed.get(0));
-//                    winners.add(currentSeed.get(1));
-//                }
-//            }
             else {
                 box = layout.findViewWithTag(currentSeed.get(0).getName());
                 if (box.isChecked()) {
@@ -262,7 +254,7 @@ public class DoubleElimRoundPairings extends AppCompatActivity {
         currentGameState.setCurrentPlayers(winners);
 
         if(winners.size() == 1){
-            intent = new Intent(this, WinnerActivity.class);
+            intent = new Intent(this, ElimWinnerActivity.class);
             intent.putExtra("winner", winners.get(0).getName());
         }
         else {

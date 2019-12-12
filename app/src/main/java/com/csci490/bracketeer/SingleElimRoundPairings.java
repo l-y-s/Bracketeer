@@ -35,7 +35,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elim_round_pairings);
+        setContentView(R.layout.activity_round_pairings);
         currentGameState = (GameState) getIntent().getExtras().getSerializable("gameState");
         currentPlayers = currentGameState.getCurrentPlayers();
         TextView round = findViewById(R.id.roundLabel);
@@ -151,7 +151,7 @@ public class SingleElimRoundPairings extends AppCompatActivity {
         currentGameState.setCurrentPlayers(winners);
 
         if(winners.size() == 1){
-            intent = new Intent(this, WinnerActivity.class);
+            intent = new Intent(this, ElimWinnerActivity.class);
             intent.putExtra("winner", winners.get(0).getName());
         }
         else {

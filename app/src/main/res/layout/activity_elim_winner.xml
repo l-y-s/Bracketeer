@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/graybackground"
-    tools:context=".WinnerActivity">
+    tools:context=".ElimWinnerActivity">
 
     <TextView
         android:id="@+id/roundLabel3"

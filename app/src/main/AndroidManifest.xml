@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WinnerActivity"></activity>
+        <activity android:name=".NonElimWinnerActivity"></activity>
+        <activity android:name=".ElimWinnerActivity" />
         <activity android:name=".RRRoundPairings" />
         <activity android:name=".SwissRoundPairings" />
         <activity android:name=".DoubleElimRoundPairings" />

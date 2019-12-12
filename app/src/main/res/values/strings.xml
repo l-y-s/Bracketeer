@@ -22,4 +22,7 @@
     <string name="congrats">Congratulations!</string>
     <string name="bye">Bye</string>
     <string name="end">End</string>
+    <string name="first">First Place:</string>
+    <string name="second">Second Place:</string>
+    <string name="third">Third Place:</string>
 </resources>
