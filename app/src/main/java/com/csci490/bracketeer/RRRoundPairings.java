@@ -95,7 +95,7 @@ public class RRRoundPairings extends AppCompatActivity {
             Player left = currentSeed.get(0);
             Player right = currentSeed.get(1);
 
-            if(left.getName() == "NULL"){
+            if(left.getName().equals("NULL")){
                 leftPlayer.setText(R.string.bye);
                 leftPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
                 rightPlayer.setText(right.getName());
@@ -106,7 +106,7 @@ public class RRRoundPairings extends AppCompatActivity {
                 rightSeedRow.addView(rightWinner);
                 rightSeedRow.addView(rightPlayer);
             }
-            else if(right.getName() == "NULL"){
+            else if(right.getName().equals("NULL")){
                 leftPlayer.setText(left.getName());
                 leftPlayer.setGravity(Gravity.CENTER_HORIZONTAL);
                 leftWinner.setTag(left.getName());
@@ -145,13 +145,6 @@ public class RRRoundPairings extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 currentGameState.setName(input.getText().toString());
-//                for(int i = 0; i < topRow.size(); i++){
-//                    currentPlayers.set(i, topRow.get(i));
-//                }
-//                for(int i = 0; i < bottomRow.size(); i++){
-//                    int reverseIndex = bottomRow.size() - 1 - i;
-//                    currentPlayers.set((i + bottomRow.size()), bottomRow.get(reverseIndex));
-//                }
                 currentGameState.setCurrentPlayers(currentPlayers);
                 currentGameState.setSerialVersionUID(ObjectStreamClass.lookup(currentGameState.getClass()).getSerialVersionUID());
                 String filename = currentGameState.getName();
