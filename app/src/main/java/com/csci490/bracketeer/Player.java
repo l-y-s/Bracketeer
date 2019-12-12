@@ -1,13 +1,14 @@
 package com.csci490.bracketeer;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable {
     private String name;
     private int matchPoints;
-    private List<String> previousOpponents;
-    private List<Integer> winLoss;
+    private List<String> previousOpponents = new ArrayList<>();
+    private List<Integer> winLoss = new ArrayList<>();
     private boolean doubleElimLoss = false;
 
     Player(String newName){

@@ -78,9 +78,11 @@ public class SwissRoundPairings extends AppCompatActivity {
     }
 
     private void createSeeds(){
-        List<Player> playerQueue = currentPlayers;
-        List<Player> pair = new ArrayList<>();
+        List<Player> playerQueue = new ArrayList<>();
+        playerQueue.addAll(currentPlayers);
+
         while(playerQueue.size() != 0) {
+            List<Player> pair = new ArrayList<>();
             if(playerQueue.size() == 1){
                 pair.add(playerQueue.get(0));
                 playerQueue.remove(0);
@@ -257,7 +259,7 @@ public class SwissRoundPairings extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("gameState", currentGameState);
 
-            intent = new Intent(this, SingleElimRoundPairings.class);
+            intent = new Intent(this, SwissRoundPairings.class);
             intent.putExtras(bundle);
         }
 
