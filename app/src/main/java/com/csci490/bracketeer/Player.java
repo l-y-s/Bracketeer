@@ -31,6 +31,14 @@ public class Player implements Serializable {
         return previousOpponents.get(round - 1);
     }
 
+    public void addPreviousOpponent(String opponent){
+        previousOpponents.add(opponent);
+    }
+
+    public void addWinLoss(int flag){
+        winLoss.add(flag);
+    }
+
     public boolean getLoss(){
         return doubleElimLoss;
     }

@@ -196,6 +196,7 @@ public class RRRoundPairings extends AppCompatActivity {
                 }
             }
         }
+
         if(currentGameState.getCurrentRound() == (currentPlayers.size() - 1)){
             Player first = currentPlayers.get(0);
             Player second = currentPlayers.get(1);
@@ -223,10 +224,8 @@ public class RRRoundPairings extends AppCompatActivity {
             intent.putExtra("first", first.getName());
             intent.putExtra("second", second.getName());
             intent.putExtra("third", third.getName());
-
-            startActivity(intent);
-            finish();
         }
+
         else{
             newOrder.set(0, currentPlayers.get(0));
             for(int i = 1; i < currentPlayers.size(); i++){
@@ -244,9 +243,9 @@ public class RRRoundPairings extends AppCompatActivity {
             bundle.putSerializable("gameState", currentGameState);
             intent = new Intent(this, RRRoundPairings.class);
             intent.putExtras(bundle);
-
-            startActivity(intent);
-            finish();
         }
+
+        startActivity(intent);
+        finish();
     }
 }
