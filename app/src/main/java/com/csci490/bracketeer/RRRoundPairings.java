@@ -229,7 +229,7 @@ public class RRRoundPairings extends AppCompatActivity {
         else{
             newOrder.set(0, currentPlayers.get(0));
             for(int i = 1; i < currentPlayers.size(); i++){
-                if(i == 7) {
+                if(i == currentPlayers.size() - 1) {
                     newOrder.set(1, currentPlayers.get(i));
                 }
                 else{
